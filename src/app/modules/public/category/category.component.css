@@ -1,0 +1,26 @@
+.card-holder{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card{
+    width: 300px;
+    margin:10px;
+    border: solid rgba(0,0,0,0.1) 1px;
+    border-radius: 5px;
+    transition: ease-in-out 0,4s;
+    box-shadow: 0px 0px 0px ;
+}
+.card:hover{
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.4) ;
+   
+}
+.card-detail{
+    padding: 5px 10px;
+}
+.card-title{
+    font-size: 13pt;
+}
+.card-price{
+    font-weight: 600;
+}
