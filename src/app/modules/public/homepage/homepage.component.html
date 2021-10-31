@@ -43,7 +43,10 @@
 				</li>
 				<li><a class="nav-link">Khác</a></li>
 			</ul>
-		
+			<div class="d-flex">
+				<button data-bs-toggle="modal" data-bs-target="#signupModal" class="btn" id="openModal" >Sign Up</button>
+				<button data-bs-toggle="modal" data-bs-target="#loginModal" class="btn" id="openModal" >Login</button>
+			</div>
 		</div>
 	</div>
 </nav>
@@ -76,35 +79,77 @@
 		</button>
 	</div>
 	<app-category></app-category>
-
-	
 </body>
-
-
 <!-- Offcanvas Sidebar -->
 <div class="offcanvas offcanvas-end" id="shop-cart">
 	<div class="offcanvas-header">
 	  <h1 class="offcanvas-title">shop cart</h1>
 	</div>
 	<div class="offcanvas-body" id="cart">
-	  <div *ngFor="let item of shopCart">
-		<div class="product-name">
-			{{item.productName}}
-		</div>
-		<div class="product-price" id="product-price">
-			{{item.price}}
-	  </div>
-	  <div class="product-quantity">
+		<div *ngFor="let item of shopCart">
+			<div class="product-name">
+				{{item.productName}}
+			</div>
+			<div class="product-price" id="product-price">
+				{{item.price}}
+			</div>
+			<div class="product-quantity">
 
-	  </div>
-	  <div class="delete-item">
-		<button (click)= "deleteItemFromCart(item.id)">delete</button>
-	  </div>
+			</div>
+			<div class="delete-item">
+				<button (click)= "deleteItemFromCart(item.id)">delete</button>
+			</div>
+		</div>
 	</div>
-	<div class="total-price">
-		{{totalPrice}}
 	<div class="offcanvas-footer">
+		<div class="total-price">
+			{{totalPrice}}
+		</div>
 		<button class="btn btn-secondary" data-bs-dismiss="offcanvas" type="button">Đóng</button>
 		<button class="btn btn-secondary" type="button" (click)="payNow()">Thanh Toán</button>
 	</div>
+	
 </div>
+
+<div class="modal fade" id="loginModal">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+  
+		<!-- Modal Header -->
+		<div class="modal-header">
+		  <h4 class="modal-title">Modal Heading</h4>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+		</div>
+  
+		<!-- Modal body -->
+		<div class="modal-body">
+			<app-login></app-login>
+		</div>
+		<!-- Modal footer -->
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <div class="modal fade" id="signupModal">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+  
+		<!-- Modal Header -->
+		<div class="modal-header">
+		  <h4 class="modal-title">Modal Heading</h4>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+		</div>
+  
+		<!-- Modal body -->
+		<div class="modal-body">
+			<app-signup></app-signup>
+		</div>
+		<!-- Modal footer -->
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>

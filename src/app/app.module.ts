@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './modules/public/homepage/homepage.component';
+import { HomepageModule } from './modules/public/homepage/homepage.module';
 import { ProductdetailComponent } from './modules/public/productdetail/productdetail.component';
 import { CustomerComponent } from './modules/customer/customer.component';
 import { SellerComponent } from './modules/seller/seller.component';
@@ -14,6 +14,9 @@ import { CategoryComponent } from './modules/public/category/category.component'
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterCategoryComponent } from './modules/public/filter-category/filter-category.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './modules/public/login/login.component';
+import { SigninComponent } from './modules/public/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { FilterCategoryComponent } from './modules/public/filter-category/filter
     CustomerComponent,
     SellerComponent,
     CategoryComponent,
-    FilterCategoryComponent
+    FilterCategoryComponent,
+    LoginComponent,
+    SigninComponent
+
   ],
   imports: [
     BrowserModule,
@@ -32,8 +38,10 @@ import { FilterCategoryComponent } from './modules/public/filter-category/filter
     CustomerRoutingModule,
     SellerRoutingModule,
     HttpClientModule,
-  
-    NgxPaginationModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    HomepageModule
 
   ],
   providers: [],
