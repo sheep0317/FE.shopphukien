@@ -41,6 +41,13 @@ export class CategoryComponent implements OnInit {
       this.getProducts();
     }
   }
+  getProductDetails() {
+    let product = this.products.find(p => p.id == localStorage.getItem('clicked_productId'));
+    return product
+  }
+  getProductId(id: String){
+    localStorage.setItem('clicked_productId', id.toString());
+  }
 }
 
 

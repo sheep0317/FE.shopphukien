@@ -62,6 +62,6 @@ export class HomepageComponent implements OnInit {
     }
   }
   payNow() {}
-  
+
 }
 
