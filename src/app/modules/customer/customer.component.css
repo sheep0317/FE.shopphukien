@@ -1,0 +1,41 @@
+.wrap{
+    display: grid;
+    grid-template-columns: 80px auto;
+}
+nav{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+    padding: 30px 0;
+    padding-left: 5px;
+}
+nav .btn-a{
+    width: 75px;
+    background-color:transparent;
+    color: white;
+    text-align: center;
+    margin: 10px 0;
+    padding: 0;
+    border-color: transparent;
+    border-radius: 10px 0 0 10px;
+    
+}
+nav .btn-a:active{
+    background-color: white;
+    color: black;
+    border: transparent;
+}
+
+nav .btn-a:focus{
+    outline: none !important;
+    transition: none;
+    border: transparent;
+}
+router-outlet{
+
+    width: 100%;
+    height: 100vh;
+    
+}

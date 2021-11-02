@@ -17,6 +17,8 @@ import { FilterCategoryComponent } from './modules/public/filter-category/filter
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './modules/public/login/login.component';
 import { SigninComponent } from './modules/public/signup/signup.component';
+import { CustomerModule } from './modules/customer/customer.module';
+import { SellerModule } from './modules/seller/seller.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { SigninComponent } from './modules/public/signup/signup.component';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    HomepageModule
+    HomepageModule,
+    CustomerModule,
+    SellerModule
 
   ],
   providers: [],

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-seller',
   templateUrl: './seller.component.html',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SellerComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private _routeService: Router) { }
 
   ngOnInit(): void {
   }
-
+  logOut(){
+    localStorage.removeItem('token');
+    this._routeService.navigate(['']);
+    console.log('logout');
+  }
 }
