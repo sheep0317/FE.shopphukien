@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 @Component({
@@ -7,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public _formBuilder: FormBuilder) { }
+  constructor(public _formBuilder: FormBuilder, private http: HttpClient) { }
   public loginForm = this._formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]]
@@ -16,9 +17,16 @@ export class LoginComponent implements OnInit {
   }
   onLogin() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
+        this.http.post('http://localhost:3000/api/user/login', this.loginForm.value).subscribe(res => {
+            this.getToken(res);
+            console.log(res);
+            console.log(localStorage.getItem('token'));
+        })
     }else{
       console.log('invalid');
     }
+  }
+  getToken(res: any) {
+    localStorage.setItem('token', res.token);
   }
 }

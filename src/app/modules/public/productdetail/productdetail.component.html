@@ -1,7 +1,11 @@
-
-
-<h1>{{product.productName}}</h1>
-<p>{{product.productDescription}}</p>
-
-<p>{{product.price}}</p>
-<button (click)="addToCart()" data-bs-dismiss="modal">add to cart </button>
+<div class="row">
+    <div class="col">
+       <img src="{{product.product_image}}" alt="">
+    </div>
+    <div class="col">
+        <h1>{{product.product_name}}</h1>
+        <p>{{product.product_description}}</p>
+        
+        <p>{{product.product_price}}</p>
+    </div>
+</div>

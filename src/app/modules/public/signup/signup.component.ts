@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -8,11 +9,15 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(public _formBuilder: FormBuilder) { }
+  constructor(public _formBuilder: FormBuilder, private http: HttpClient) { }
   signupForm = this._formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
+    displayname: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(6)]],
-    confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
+    confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+    phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+    address: ['', [Validators.required]],
+    gender:['', [Validators.required]],
   });
   passNotMatch(){
     if (this.signupForm.value.password !== this.signupForm.value.confirmPassword) {
@@ -30,10 +35,15 @@ export class SigninComponent implements OnInit {
     }else{
       
       if(this.signupForm.valid){
-        console.log(this.signupForm.value);
+        this.register();
       }else{
         console.log('invalid');
       }
     }
+  }
+  register(){
+    this.http.post('http://localhost:3000/api/user/register', this.signupForm.value).subscribe(data => {
+      console.log(data);
+    })
   }
 }

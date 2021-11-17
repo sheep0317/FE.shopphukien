@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
-
+import { Res } from 'src/app/models/res.model';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -9,7 +9,7 @@ import { Product } from 'src/app/models/product.model';
 })
 export class CategoryComponent implements OnInit {
   
-  url = `assets/cate.json`;
+  url = `http://localhost:3000/api/products/`;
   products : Product[] =[];
   p: number = 1;
   constructor(private http:HttpClient) { }
@@ -17,8 +17,9 @@ export class CategoryComponent implements OnInit {
     this.getProducts();
   }
   getProducts() {
-    this.http.get<Product[]>(this.url).subscribe(data => {
-      this.products = data;
+    this.http.get<Res>(this.url).subscribe(data => {
+      var temp = data['data'];
+      this.products = temp;
       console.log(this.products);
     });
   }
@@ -28,22 +29,21 @@ export class CategoryComponent implements OnInit {
   priceFilter(minPrice: string, maxPrice: string) {
     
     if (minPrice && maxPrice) {
-      this.products = this.products.filter(p => p.price >= +minPrice && p.price <= +maxPrice);
+      this.products = this.products.filter(p => p.product_price >= +minPrice && p.product_price <= +maxPrice);
     }
     else if (minPrice) {
       
-      this.products = this.products.filter(p => p.price >= +minPrice);
+      this.products = this.products.filter(p => p.product_price >= +minPrice);
     }
     else if (maxPrice) {
      
-      this.products = this.products.filter(p => p.price <= +maxPrice);
+      this.products = this.products.filter(p => p.product_price <= +maxPrice);
     }else{
       this.getProducts();
     }
   }
   getProductDetails() {
-    let product = this.products.find(p => p.id == localStorage.getItem('clicked_productId'));
-    return product
+    return localStorage.getItem('clicked_productId');
   }
   getProductId(id: String){
     localStorage.setItem('clicked_productId', id.toString());
