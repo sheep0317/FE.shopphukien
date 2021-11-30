@@ -19,6 +19,8 @@ import { LoginComponent } from './modules/public/login/login.component';
 import { SigninComponent } from './modules/public/signup/signup.component';
 import { CustomerModule } from './modules/customer/customer.module';
 import { SellerModule } from './modules/seller/seller.module';
+import { ResetPasswordComponent } from './modules/public/reset-password/reset-password.component';
+import { ForgetPasswordComponent } from './modules/public/forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { SellerModule } from './modules/seller/seller.module';
     CategoryComponent,
     FilterCategoryComponent,
     LoginComponent,
-    SigninComponent
+    SigninComponent,
+    ResetPasswordComponent,
+    ForgetPasswordComponent
 
   ],
   imports: [
