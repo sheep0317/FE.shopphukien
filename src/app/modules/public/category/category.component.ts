@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/product.model';
 import { Res } from 'src/app/models/res.model';
 @Component({
@@ -8,38 +9,37 @@ import { Res } from 'src/app/models/res.model';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-  
-  url = `http://localhost:3000/api/products/`;
-  products : Product[] =[];
+  products:any;
   p: number = 1;
-  constructor(private http:HttpClient) { }
+  constructor(private productService: ProductsService) { }
   ngOnInit(): void {
-    this.getProducts();
+    this.getAllProducts();
   }
-  getProducts() {
-    this.http.get<Res>(this.url).subscribe(data => {
-      var temp = data['data'];
-      this.products = temp;
-      console.log(this.products);
-    });
-  }
-  refresh(){
-    this.getProducts();
+  
+  getAllProducts() {
+    this.productService.getProducts().subscribe(
+      data => {
+        this.products = data.data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
   priceFilter(minPrice: string, maxPrice: string) {
-    
     if (minPrice && maxPrice) {
-      this.products = this.products.filter(p => p.product_price >= +minPrice && p.product_price <= +maxPrice);
+      this.products = this.products.filter((p: { product_price: number; }) => p.product_price >= +minPrice && p.product_price <= +maxPrice);
     }
     else if (minPrice) {
       
-      this.products = this.products.filter(p => p.product_price >= +minPrice);
+      this.products = this.products.filter((p: { product_price: number; }) => p.product_price >= +minPrice);
     }
     else if (maxPrice) {
      
-      this.products = this.products.filter(p => p.product_price <= +maxPrice);
+      this.products = this.products.filter((p: { product_price: number; }) => p.product_price <= +maxPrice);
     }else{
-      this.getProducts();
+      this.getAllProducts();
+    
     }
   }
   getProductDetails() {
@@ -47,6 +47,7 @@ export class CategoryComponent implements OnInit {
   }
   getProductId(id: String){
     localStorage.setItem('clicked_productId', id.toString());
+    console.log(localStorage.getItem('clicked_productId'));
   }
 }
 

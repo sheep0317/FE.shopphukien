@@ -1,0 +1,87 @@
+<head>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<div class="shop-logo">
+	<h1 class="brand-name">
+		phukien
+	</h1>
+	<div class="d-flex">
+		<div *ngIf = "isLogin()">
+			<button class="btn cart-btn"  data-bs-toggle="offcanvas" data-bs-target="#shop-cart"> <i class="material-icons">shopping_cart</i></button>
+		</div>
+	</div>
+</div>
+<nav class="navbar navbar-expand-md">
+	<div class="container">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li>
+					<a class="nav-link">Tất cả sản phẩm</a>
+				</li>
+				<li>
+					<a class="nav-link">Op Lung</a>
+				</li>
+				<li><a class="nav-link">Khác</a></li>
+			</ul>
+			<div class="d-flex">
+				<div *ngIf = "isLogin(); else elseBlock">
+					<button class="btn btn-outline-success" (click)="logout()" >Đăng xuất</button>
+					{{email}}
+				</div>
+				<ng-template #elseBlock>
+					<button data-bs-toggle="modal" data-bs-target="#signupModal" class="btn" id="openModal" >Sign Up</button>
+					<button data-bs-toggle="modal" data-bs-target="#loginModal" class="btn" id="openModal" >Login</button>
+				</ng-template>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+<div class="modal fade" id="loginModal">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+  
+		<!-- Modal Header -->
+		<div class="modal-header">
+		  <h4 class="modal-title">Login</h4>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+		</div>
+  
+		<!-- Modal body -->
+		<div class="modal-body">
+			<app-login></app-login>
+		</div>
+		<!-- Modal footer -->
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  
+  <div class="modal fade" id="signupModal">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+  
+		<!-- Modal Header -->
+		<div class="modal-header">
+		  <h4 class="modal-title">Register</h4>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+		</div>
+  
+		<!-- Modal body -->
+		<div class="modal-body">
+			<app-signup></app-signup>
+		</div>
+		<!-- Modal footer -->
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+

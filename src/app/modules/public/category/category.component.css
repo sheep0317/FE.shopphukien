@@ -5,13 +5,17 @@
 }
 .card{
     width: 300px;
+    height: 400px;
     margin:10px;
     border: solid rgba(0,0,0,0.1) 1px;
     border-radius: 5px;
     transition: ease-in-out 0,4s;
     box-shadow: 0px 0px 0px ;
+    text-decoration: none;
+    color: #000;
 }
 .card:hover{
+    transition: cubic-bezier(0.165, 0.84, 0.44, 1) 0.4s;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.4) ;
    
 }

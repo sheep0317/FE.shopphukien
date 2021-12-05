@@ -1,52 +1,32 @@
-<div class="col-sm-2">
-    <input #minPrice id="" placeholder="Min Value" type="number">
-    <input #maxPrice placeholder="Max Value" type="number">
-    <button (click)="priceFilter(minPrice.value, maxPrice.value)">Filter</button>
-    <button (click)="refresh()">Refresh</button>
-</div>
-<div class="col-sm-10">
-    <div class="card-holder">
-        <div *ngFor = "let product of products | paginate: { itemsPerPage: 10, currentPage: p} ">
-         <button class="card" href="#" id="" data-bs-toggle="modal" data-bs-target="#product-detail" (click)="getProductId(product.productid)">
-             <div class="card-img">
-                 <img class= "img-fluid" src="https://d1vm37nfym7tjl.cloudfront.net/web/image/product.product/22590/image_1024/%5BFMKBN104MSS-ECSP2SUS%5D%20B%C3%A0n%20ph%C3%ADm%20c%C6%A1%20Filco%20Majestouch%202S%20Metal%20SUS%20%28Fullsize%2C%20Silver%20Speed%20Switch%29?unique=5f8e210">
-             </div>
-             <div class="card-detail">
-                 <div class="card-title">
-                    {{product.product_name}}
-                 </div>
-                 <div class="card-price">
-                   {{product.product_price }} VND
-                 </div>
-             </div>
-             
-         </button>
-        </div>
-     </div>
-     <pagination-controls (pageChange)="p = $event"></pagination-controls>
-</div>
+<div class="row">
+  <div class="col-xl-3">
 
-<div class="modal fade" id="product-detail">
-	<div class="modal-dialog modal-xl">
-	  <div class="modal-content">
-  
-		<!-- Modal Header -->
-		<div class="modal-header">
-		  <h4 class="modal-title">Modal Heading</h4>
-		  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-		</div>
-  
-		<!-- Modal body -->
-		<div class="modal-body">
-      
-        <app-productdetail [id]="getProductDetails()"></app-productdetail>
-    
-			
-		</div>
-		<!-- Modal footer -->
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-		</div>
-	  </div>
-	</div>
+    <input #minPrice class="form-control" placeholder="Min Value" type="number">
+    <input #maxPrice class="form-control" placeholder="Max Value" type="number">
+    <button class="btn" (click)="priceFilter(minPrice.value, maxPrice.value)">Filter</button>
   </div>
+  <div class="col-xl-9">
+    <div class="card-holder">
+      <div *ngFor = "let product of products | paginate: { itemsPerPage: 12, currentPage: p} ">
+        <a class="card" href="homepage/productdetail/{{product.productid}}">
+          <div class="card-img">
+            <img class= "img-fluid" src="{{product.product_image}}">
+          </div>
+          <div class="card-detail">
+            <div class="card-title">
+              {{product.product_name}}
+            </div>
+            <div class="card-price">
+              {{product.product_price}} VND
+            </div>
+          </div>
+             
+        </a>
+      </div>
+    </div>
+    <pagination-controls  (pageChange)="p = $event"
+                          previousLabel="Trang trước"
+                          nextLabel="Trang sau">
+    </pagination-controls>
+</div>
+</div>

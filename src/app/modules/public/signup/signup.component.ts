@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-
+import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -9,7 +10,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(public _formBuilder: FormBuilder, private http: HttpClient) { }
+  constructor(
+    public _formBuilder: FormBuilder, 
+    private authService: AuthService,
+    private toastr: ToastrService
+  ) { }
   signupForm = this._formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     displayname: ['', [Validators.required]],
@@ -33,7 +38,6 @@ export class SigninComponent implements OnInit {
     if (this.passNotMatch()) {
       console.log('password not match');
     }else{
-      
       if(this.signupForm.valid){
         this.register();
       }else{
@@ -42,8 +46,16 @@ export class SigninComponent implements OnInit {
     }
   }
   register(){
-    this.http.post('http://localhost:3000/api/user/register', this.signupForm.value).subscribe(data => {
-      console.log(data);
-    })
+    console.log(this.signupForm.value);
+    this.authService.register(this.signupForm.value).subscribe(
+      res => {
+        console.log(res);
+        this.toastr.success('Signup Successfully');
+      },
+      err => {
+        console.log(err);
+        this.toastr.error('Signup Failed');
+      }
+    );
   }
 }

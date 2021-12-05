@@ -13,7 +13,6 @@ import { SellerRoutingModule } from './modules/seller/seller-routing.module';
 import { CategoryComponent } from './modules/public/category/category.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { FilterCategoryComponent } from './modules/public/filter-category/filter-category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './modules/public/login/login.component';
 import { SigninComponent } from './modules/public/signup/signup.component';
@@ -21,6 +20,10 @@ import { CustomerModule } from './modules/customer/customer.module';
 import { SellerModule } from './modules/seller/seller.module';
 import { ResetPasswordComponent } from './modules/public/reset-password/reset-password.component';
 import { ForgetPasswordComponent } from './modules/public/forget-password/forget-password.component';
+import { HeaderComponent } from './modules/public/header/header.component';
+import { FooterComponent } from './modules/public/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -30,11 +33,12 @@ import { ForgetPasswordComponent } from './modules/public/forget-password/forget
     CustomerComponent,
     SellerComponent,
     CategoryComponent,
-    FilterCategoryComponent,
     LoginComponent,
     SigninComponent,
     ResetPasswordComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    HeaderComponent,
+    FooterComponent
 
   ],
   imports: [
@@ -49,7 +53,9 @@ import { ForgetPasswordComponent } from './modules/public/forget-password/forget
     NgxPaginationModule,
     HomepageModule,
     CustomerModule,
-    SellerModule
+    SellerModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
 
   ],
   providers: [],
