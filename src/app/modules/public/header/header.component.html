@@ -1,7 +1,7 @@
 <head>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<div class="shop-logo">
+<div class="shop-logo" routerLink="/homepage">
 	<h1 class="brand-name">
 		phukien
 	</h1>
@@ -19,7 +19,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li>
-					<a class="nav-link">Tất cả sản phẩm</a>
+					<a class="nav-link" routerLink="/homepage">Tất cả sản phẩm</a>
 				</li>
 				<li>
 					<a class="nav-link">Op Lung</a>
@@ -28,8 +28,13 @@
 			</ul>
 			<div class="d-flex">
 				<div *ngIf = "isLogin(); else elseBlock">
+					<div *ngIf= "roleCheck(); else adminBlock">
+						<button class="btn btn-outline-success" routerLink="/customer">{{displayName}}</button>
+					</div>
+					<ng-template #adminBlock>
+						<button class="btn btn-outline-success" routerLink="/seller">{{displayName}}</button>
+					</ng-template>
 					<button class="btn btn-outline-success" (click)="logout()" >Đăng xuất</button>
-					{{email}}
 				</div>
 				<ng-template #elseBlock>
 					<button data-bs-toggle="modal" data-bs-target="#signupModal" class="btn" id="openModal" >Sign Up</button>

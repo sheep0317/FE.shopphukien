@@ -5,4 +5,5 @@ export interface Res {
     role: string;
     displayName: string;
     success: boolean;
+    cart: any;
 }

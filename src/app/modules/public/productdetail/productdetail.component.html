@@ -1,11 +1,17 @@
 <div class="row">
     <div class="col">
-       <img src="{{product.product_image}}" alt="">
+       <img src="{{product.product_image}}" class="img-fluid">
     </div>
     <div class="col">
         <h1>{{product.product_name}}</h1>
+        <label>Mo ta san pham:</label>
         <p>{{product.product_description}}</p>
         
-        <p>{{product.product_price}}</p>
+        <p>Gia ban:{{product.product_price}}</p>
+        <p>So luong con lai: {{product.product_quantity}}</p>
+        <input type="number" #getQuantity min = "1" max="{{product.product_quantity}}" value="1" onKeyDown="return false">
+        <button (click)="addToCart(getQuantity.value)">
+            add to cart
+        </button>
     </div>
 </div>

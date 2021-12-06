@@ -6,6 +6,7 @@ import { ResetPasswordComponent } from './modules/public/reset-password/reset-pa
 import { HomepageRoutingModule } from './modules/public/homepage/homepage-routing.module';
 import { CustomerRoutingModule } from './modules/customer/customer-routing.module';
 import { SellerRoutingModule } from './modules/seller/seller-routing.module';
+import { PageNotFoundComponent } from './modules/public/page-not-found/page-not-found.component';
 const routes: Routes = [
   {
     path: 'homepage',
@@ -39,9 +40,12 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo:'/homepage',
+    redirectTo:'/404',
   },
-
+  {
+    path: '404',
+    component: PageNotFoundComponent
+  }
   
 ];
 

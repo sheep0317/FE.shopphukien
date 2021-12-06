@@ -27,8 +27,11 @@ export class LoginComponent implements OnInit {
       res => {
         this.getToken(res['token']);
         console.log(localStorage.getItem('token'));
+        localStorage.setItem('email', this.loginForm.value.loginEmail);
         console.log(res);
-        localStorage.setItem('emailLogin', res['displayName']);
+        localStorage.setItem('displayName', res['displayName']);
+        
+        window.location.reload();
         this.showToastr(true, "Login Successful");
       },
       err => {

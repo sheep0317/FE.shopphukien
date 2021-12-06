@@ -24,6 +24,8 @@ import { HeaderComponent } from './modules/public/header/header.component';
 import { FooterComponent } from './modules/public/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CartComponent } from './modules/public/cart/cart.component';
+import { PageNotFoundComponent } from './modules/public/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ToastrModule } from 'ngx-toastr';
     ResetPasswordComponent,
     ForgetPasswordComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CartComponent,
+    PageNotFoundComponent
 
   ],
   imports: [

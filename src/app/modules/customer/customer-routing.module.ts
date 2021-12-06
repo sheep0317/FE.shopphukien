@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CusCartComponent } from './cus-cart/cus-cart.component';
 import { CusHistoryComponent } from './cus-history/cus-history.component';
 import { CusManageComponent } from './cus-manage/cus-manage.component';
 import { CusProfileComponent } from './cus-profile/cus-profile.component';
@@ -29,9 +28,6 @@ const routes: Routes = [
             component: CusHistoryComponent
           },
           {
-            path: 'cart',
-            component: CusCartComponent
-          },{
             path: 'stat',
             component: CusStatComponent
           }

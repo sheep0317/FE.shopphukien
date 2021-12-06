@@ -1,0 +1,28 @@
+<div *ngFor="let product of cartItems">
+    <div class="row">
+        <div class="col">
+            <img src="{{product.product_image}}" alt="" class="img-fluid">
+        </div>
+        <div class="col">
+            <div>
+                {{product.product_name}}
+            </div>
+            <input type="number" value="{{product.product_quantity}}">
+            <div>
+                {{product.product_price}}
+            </div>
+        </div>
+        <div class="col">
+            <button (click)="deleteToCart(product.product_id)">Delete</button>
+        </div>
+    </div>
+</div>
+<div class="total">
+    <h1>
+        {{totalCart}}
+    </h1>
+</div>
+<div class="row">
+    <div class="col">
+        <button (click)="checkout()">Checkout</button>
+    </div>
