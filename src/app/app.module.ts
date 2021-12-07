@@ -59,7 +59,7 @@ import { PageNotFoundComponent } from './modules/public/page-not-found/page-not-
     CustomerModule,
     SellerModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
 
   ],
   providers: [],

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CartItem } from 'src/app/models/cart.model';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -12,8 +11,12 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
    
   }
-
-  payNow() {}
+  roleCheck(){
+    if(localStorage.getItem('role') == '1'){
+      return true;
+    }
+    return false;
+  }
 
 }
 

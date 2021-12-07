@@ -1,1 +1,53 @@
-<p>slr-bill works!</p>
+<div class="wrap-box">
+    <div *ngFor = "let order of allBill">
+        <div class="bill">
+            <div class="bill-Info">
+                <div>
+                    Bill ID: {{order.id}}
+                </div>
+                <div>
+                    Created at: {{order.createDate}}
+                </div>
+                <div>
+                    <div *ngIf = "isPaid(order.paidDate); else elseBlock">
+                        Da xu ly
+                    </div>
+                    <ng-template #elseBlock>
+                       Chua Xu Ly
+                    </ng-template>
+                </div>
+                <button data-bs-toggle="collapse" 
+                        class="btn" [attr.data-bs-target]= "'#orderDetail' + order.id">
+                    Xem Them
+                </button>
+            </div>
+            <div *ngIf = "isPaid(order.paidDate); else elseOrder">
+            </div>
+            <ng-template #elseOrder>
+                <div class="bill-func">
+
+                    <button class="" (click)="deleteBill(order.id)">Delete</button>
+    
+                    <button class="" (click)="getOrder(order.id)">getOrder</button>
+                </div>
+            </ng-template>
+            
+            
+        </div>
+        <div class="collapse" id="orderDetail{{order.id}}">
+            <div class="card card-body">
+                <div *ngFor = "let product of order.products">
+                    product: {{product.product_name}}
+                    product id: {{product.product_id}}
+                    product quantity: {{product.product_quantity}}
+                    product price: {{product.total}}
+                </div>
+            </div>
+        </div>
+
+          
+          
+        
+    
+    </div>
+</div>

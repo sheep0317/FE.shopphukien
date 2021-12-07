@@ -1,25 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SellerRoutingModule } from './seller-routing.module';
 import { SlrManageComponent } from './slr-manage/slr-manage.component';
-import { SlrStatComponent } from './slr-stat/slr-stat.component';
 import { SlrBillComponent } from './slr-bill/slr-bill.component';
-import { SlrProfileComponent } from './slr-profile/slr-profile.component';
 import { SlrProductlistComponent } from './slr-productlist/slr-productlist.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     SlrManageComponent,
-    SlrStatComponent,
     SlrBillComponent,
-    SlrProfileComponent,
     SlrProductlistComponent
   ],
   imports: [
     CommonModule,
-    SellerRoutingModule
+    SellerRoutingModule,
+    NgxPaginationModule,
+    ReactiveFormsModule
   ]
 })
 export class SellerModule { }

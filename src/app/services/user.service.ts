@@ -25,4 +25,9 @@ export class UserService {
       return this.http.post<Res>(API_LINK + 'user/changePassword', {email: localStorage.getItem('email'), password: changepassForm.newPassword, oldPassword: changepassForm.currentPassword}, {headers: this.headers});
     } return this.http.post<Res>(API_LINK + 'user/changePassword', {email: localStorage.getItem('email'), password: changepassForm.newPassword, oldPassword: changepassForm.currentPassword});
   }
+  updateUser(user: any) {
+    if (this.headers instanceof HttpHeaders) {
+      return this.http.post<Res>(API_LINK + 'user/update', user, {headers: this.headers});
+    } return this.http.post<Res>(API_LINK + 'user/update', user);
+  }
 }

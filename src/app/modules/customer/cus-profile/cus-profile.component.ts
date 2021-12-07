@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  Validators, FormBuilder} from '@angular/forms'
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-cus-profile',
@@ -13,7 +15,7 @@ export class CusProfileComponent implements OnInit {
     newPassword: ['', [Validators.required, Validators.minLength(6)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
   })
-  constructor(public _formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(public _formBuilder: FormBuilder, private userService: UserService, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
     this.getProfile()
@@ -29,7 +31,23 @@ export class CusProfileComponent implements OnInit {
     )
   }
   editProfile(phone: string, gender: string, address: string, displayName: string){
-
+    const user = {
+      displayname: displayName,
+      address: address,
+      gender: gender,
+      phone: phone,
+      email: localStorage.getItem('email')
+    }
+    console.log(user)
+    this.userService.updateUser(user).subscribe(
+      data => { 
+        window.location.reload();
+      },
+      err => {
+        console.log(err)
+        this.toastr.error('Error', 'Error')
+      }
+    )
   }
   getProfile(){
     this.userService.getUser(localStorage.getItem('email')).subscribe(

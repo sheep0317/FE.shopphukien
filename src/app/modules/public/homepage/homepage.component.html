@@ -11,7 +11,11 @@
 
 </app-footer>
 <!-- Offcanvas Sidebar -->
-<div class="offcanvas offcanvas-end" id="shop-cart">
-	<app-cart></app-cart>
+
+<div *ngIf="roleCheck()">
+	<div class="offcanvas offcanvas-end" id="shop-cart">
+		<app-cart></app-cart>
+	</div>
 </div>
+
 

@@ -1,0 +1,24 @@
+.root{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    margin: 10px;
+}
+.function{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+}
+.function button{
+    margin: 5px;
+    height: 45px;
+    background-color: #76ABF5;
+    color: white;
+    border: none;
+    font-weight: bold;
+
+}
+.route-outlet{
+    margin: 10px;
+    padding: 20px;
+}

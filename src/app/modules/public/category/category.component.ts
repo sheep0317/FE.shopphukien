@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
-import { Product } from 'src/app/models/product.model';
-import { Res } from 'src/app/models/res.model';
+
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',

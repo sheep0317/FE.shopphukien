@@ -39,7 +39,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '**',
+    path: 'asdasdasds',
     redirectTo:'/404',
   },
   {
@@ -52,7 +52,7 @@ const routes: Routes = [
 @NgModule({
   imports: 
   [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' }),
     HomepageRoutingModule,
     CustomerRoutingModule,
     SellerRoutingModule

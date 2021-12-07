@@ -12,7 +12,7 @@ export class CustomerComponent implements OnInit {
   ngOnInit(): void {
   }
   logOut(){
-    localStorage.removeItem('token');
+    localStorage.clear();
     this._routeService.navigate(['']);
     console.log('logout');
   }

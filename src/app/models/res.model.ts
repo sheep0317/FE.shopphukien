@@ -6,4 +6,5 @@ export interface Res {
     displayName: string;
     success: boolean;
     cart: any;
+    status: number;
 }

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/services/cart.service';
-import { BillService } from 'src/app/services/bill.service';
 import { ToastrService } from 'ngx-toastr';
+import { BillService } from 'src/app/services/bill.service';
+import { CartService } from 'src/app/services/cart.service';
+
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'app-cus-cart',
+  templateUrl: './cus-cart.component.html',
+  styleUrls: ['./cus-cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CusCartComponent implements OnInit {
 
   constructor(private cartService: CartService, private billService: BillService, private toastr: ToastrService) { }
   cartItems: any = [];
@@ -22,10 +23,6 @@ export class CartComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getCart();
-    this.calculateTotal();
-  }
-  calculateTotal() {
-  
   }
   getCart(){
     this.cartService.getCart().subscribe(
@@ -45,17 +42,13 @@ export class CartComponent implements OnInit {
       },
       err => {
         if (err.status === 401) {
-          if(localStorage.getItem('role') == "0"){
-
-          }else{
-            localStorage.clear();
-          }
-          
+          localStorage.clear();
         }
         console.log(err);
       }
     );
   }
+
   deleteToCart(id: any) {
     this.cartService.deleteFromCart(id).subscribe(
       data => {
@@ -67,15 +60,7 @@ export class CartComponent implements OnInit {
       }
     );
   }
-  updateCart(id: any, quantity: any) {
-    console.log(id, quantity);
-    this.cartItems.forEach((element: { product_price: any ; product_quantity: any; product_name: any ; product_id: any }) => {
-      
-      if (element.product_id == id) {
-        element.product_quantity = quantity;
-      }
-    })
-    /*
+  updateCart(id: any, quantity: any) {    
     this.cartService.updateCart(id, quantity).subscribe(
       data => {
         console.log(data);
@@ -84,7 +69,7 @@ export class CartComponent implements OnInit {
         console.log(err);
       }
     )
-    */
+    
 
   }
   checkout() {

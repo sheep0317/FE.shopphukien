@@ -1,1 +1,97 @@
-<p>slr-productlist works!</p>
+<div class="head">
+    <h2>Tat ca san pham</h2>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">Add Product</button>
+</div>
+<div *ngFor = "let product of products  | paginate: { itemsPerPage: 6, currentPage: p}">
+    <div class="row box">
+        <div class="col">
+            {{product.productid}}
+        </div>
+        <div class="col">
+            {{product.product_name}}
+        </div>
+        <div class="col">
+            <img src="{{product.product_image}}" alt="" class="img-fluid">
+        </div>
+        <div class="col">
+            {{product.product_price}}
+        </div>
+        <div class="col">
+            {{product.product_price}}
+        </div>
+        <div class="col">
+            {{product.product_quantity}}
+        </div>
+        <div class="col function" >
+            <button class="btn btn-primary" (click)="clickedId(product.productid)" data-bs-toggle="modal" data-bs-target="#updateProduct" >Cap nhat san pham</button>
+            <button class="btn btn-secondary" (click)="deleteProduct(product.productid)">Xoa san pham</button>
+        </div>
+    </div>
+</div>
+<pagination-controls    (pageChange)="p = $event"
+                        previousLabel="Trang trước"
+                        nextLabel="Trang sau">
+</pagination-controls>
+
+<!-- The Modal -->
+<div class="modal fade" id="addProduct">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+            <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">Add Product</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+    
+          <!-- Modal body -->
+          <div class="modal-body">
+                <input type="text" class="form-control" placeholder="Product Name" formControlName="product_name">
+                <input type="number" class="form-control" placeholder="Product Price" formControlName="product_price">
+                <input type="number" class="form-control" placeholder="Product Quantity" formControlName="product_quantity">
+                <input type="text" class="form-control" placeholder="Product Image" formControlName="product_image">
+                <input type="text" class="form-control" placeholder="Product Brand" formControlName="product_brand">
+                <input type="text" class="form-control" placeholder="Product Type" formControlName="product_type">
+                <textarea  type="text" class="form-control" placeholder="Product Description" formControlName="product_description"></textarea>
+          </div>
+    
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success" data-bs-dismiss="modal" [disabled]="!addProductForm.valid">Save Change</button>
+          </div>
+        </form>
+        
+  
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="updateProduct">
+    <div class="modal-dialog">
+      <div class="modal-content">
+       
+            <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">Add Product</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+    
+          <!-- Modal body -->
+          <div class="modal-body">
+                <input type="text" #productId class="form-control" placeholder="product id" value="{{clickedProduct.productid}}">
+                <input type="number" #productPrice class="form-control" placeholder="Product Price" value="{{clickedProduct.product_price}}">
+                <input type="number" #productQuantity class="form-control" placeholder="Product Quantity" value="{{clickedProduct.product_quantity}}">
+                
+          </div>
+    
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success" data-bs-dismiss="modal" (click)="updateProduct(productId.value, productPrice.value, productQuantity.value)">Save Change</button>
+          </div>
+       
+        
+  
+      </div>
+    </div>
+  </div>

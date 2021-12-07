@@ -4,8 +4,6 @@ import { SellerComponent } from './seller.component';
 import { SlrBillComponent } from './slr-bill/slr-bill.component';
 import { SlrManageComponent } from './slr-manage/slr-manage.component';
 import { SlrProductlistComponent } from './slr-productlist/slr-productlist.component';
-import { SlrProfileComponent } from './slr-profile/slr-profile.component';
-import { SlrStatComponent } from './slr-stat/slr-stat.component';
 
 const routes: Routes = [
   {
@@ -13,17 +11,19 @@ const routes: Routes = [
     component:SellerComponent,
     children:[
       {
-        path: 'profile',
-        component: SlrProfileComponent
-      },
-      {
         path: '',
-        component: SlrProfileComponent
+        redirectTo: 'manage',
+        pathMatch: 'full'
       },
       {
         path: 'manage',
         component: SlrManageComponent,
         children:[
+          {
+            path: '',
+            component: SlrProductlistComponent
+
+          },
           {
             path: 'productList',
             component: SlrProductlistComponent
@@ -31,10 +31,7 @@ const routes: Routes = [
           {
             path: 'bills',
             component: SlrBillComponent
-          },{
-            path: 'stat',
-            component: SlrStatComponent
-          }
+          },
         ]
       }
     ]

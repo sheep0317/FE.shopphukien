@@ -38,16 +38,10 @@ export class CartService {
   updateCart(id: number, quantity: string) {
     const header = this.getHeaders();
     if (header instanceof HttpHeaders) {
-      return this.http.post<Res>(API_LINK + 'cart/update', {id: id, email: localStorage.getItem('email'), product_quantity: quantity}, {headers: header});
+      return this.http.post<Res>(API_LINK + 'cart/update', {product_id: id, email: localStorage.getItem('email'), product_quantity: quantity}, {headers: header});
     }
-    return this.http.post<Res>(API_LINK + 'cart/update', {id: id, email: localStorage.getItem('email'), product_quantity: quantity});
+    return this.http.post<Res>(API_LINK + 'cart/update', {product_id: id, email: localStorage.getItem('email'), product_quantity: quantity});
   }
-  clearCart() {
-    const header = this.getHeaders();
-    if (header instanceof HttpHeaders) {
-      return this.http.post<Res>(API_LINK + 'cart/clearCart', {email: localStorage.getItem('email')}, {headers: header});
-    }
-    return this.http.post<Res>(API_LINK + 'cart/clearCart', {email: localStorage.getItem('email')});
-  }
+  
 
 }

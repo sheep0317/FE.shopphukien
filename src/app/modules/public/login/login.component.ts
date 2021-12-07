@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
     public _formBuilder: FormBuilder,
     private http: HttpClient,
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) { }
   public loginForm = this._formBuilder.group({
     loginEmail: ['', [Validators.required, Validators.email]],
@@ -28,10 +30,9 @@ export class LoginComponent implements OnInit {
         this.getToken(res['token']);
         console.log(localStorage.getItem('token'));
         localStorage.setItem('email', this.loginForm.value.loginEmail);
-        console.log(res);
         localStorage.setItem('displayName', res['displayName']);
-        
-        window.location.reload();
+        localStorage.setItem('role', res['role'])
+        this.router.navigate(['/homepage']);
         this.showToastr(true, "Login Successful");
       },
       err => {

@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CusCartComponent } from './cus-cart/cus-cart.component';
 import { CusHistoryComponent } from './cus-history/cus-history.component';
 import { CusManageComponent } from './cus-manage/cus-manage.component';
+import { CusOrderdetailComponent } from './cus-orderdetail/cus-orderdetail.component';
 import { CusProfileComponent } from './cus-profile/cus-profile.component';
-import { CusStatComponent } from './cus-stat/cus-stat.component';
 import { CustomerComponent } from './customer.component';
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
     children:[
       {
         path: 'profile',
-        component: CusProfileComponent
+        component: CusProfileComponent,
+        
       },
       {
         path: '',
@@ -24,12 +26,21 @@ const routes: Routes = [
         component: CusManageComponent,
         children:[
           {
+            path: '',
+            redirectTo: 'history',
+            pathMatch: 'full'
+          },
+          {
             path: 'history',
             component: CusHistoryComponent
           },
           {
-            path: 'stat',
-            component: CusStatComponent
+            path: 'history/:id',
+            component: CusOrderdetailComponent
+          },
+          {
+            path: 'cart',
+            component: CusCartComponent
           }
         ]
       }

@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit {
     if(this.isLogin()){
       this.displayName = localStorage.getItem('displayName');
     }
-    
   }
 
 }
