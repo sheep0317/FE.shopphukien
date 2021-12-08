@@ -1,0 +1,11 @@
+.wrap{
+    display: flex;
+    flex-direction: column;
+}
+.form-group{
+    margin-bottom: 12px;
+}
+.wrap button{
+    margin-top: 12px;
+    width: 100%;
+}

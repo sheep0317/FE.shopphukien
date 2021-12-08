@@ -1,34 +1,45 @@
-<div *ngFor="let product of cartItems">
-    <div class="row">
-        <div class="col">
-            <img src="{{product.product_image}}" alt="" class="img-fluid">
-        </div>
-        <div class="col">
-            <div>
-                {{product.product_name}}
+<div class="wrap">
+    <div *ngFor="let product of cartItems">
+        <div class="cart-item">
+            <div class="row">
+                <div class="col">
+                    Ma san Pham: {{product.product_id}}
+                </div>
+                <div class="col">
+                    <img src="{{product.product_image}}" alt="" class="img-fluid">
+                </div>
+                <div class="col">
+                    <div>
+                        {{product.product_name}}
+                    </div>
+                    <div>
+                        <button (click)="subQuantity(product.product_id)">
+                            -
+                        </button>
+                        <input type="number" value="{{product.product_quantity}}">
+                        <button (click)="addQuantity(product.product_id)">
+                            +
+                        </button>
+                    </div>
+                    <div>
+                        Gia san pham: {{product.product_price}}
+                    </div>
+                </div>
+                <div class="col">
+                    <button class = "deleteToCart" (click)="deleteToCart(product.product_id)">Xoa khoi gio hang</button>
+                </div>
             </div>
-            <button (click)="subQuantity(product.product_id)">
-                -
-            </button>
-            <input type="number" value="{{product.product_quantity}}">
-            <button (click)="addQuantity(product.product_id)">
-                +
-            </button>
-            <div>
-                {{product.product_price}}
-            </div>
         </div>
-        <div class="col">
-            <button (click)="deleteToCart(product.product_id)">Delete</button>
-        </div>
+       
     </div>
 </div>
-<div class="total">
-    <h1>
-        {{totalCart}}
-    </h1>
-</div>
-<div class="row">
-    <div class="col">
-        <button (click)="checkout()">Checkout</button>
+<div class="checkout">
+    <div class="total">
+        <p>
+           Tong gia tri gio hang: {{totalCart}}
+        </p>
     </div>
+    <div class="button">
+        <button (click)="checkout()">Dat hang</button>
+    </div>
+</div>

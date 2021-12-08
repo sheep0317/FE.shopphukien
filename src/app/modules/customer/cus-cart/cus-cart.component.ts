@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BillService } from 'src/app/services/bill.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -10,7 +11,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CusCartComponent implements OnInit {
 
-  constructor(private cartService: CartService, private billService: BillService, private toastr: ToastrService) { }
+  constructor(private cartService: CartService, private billService: BillService, private toastr: ToastrService, private router: Router) { }
   cartItems: any = [];
   totalCart: number = 0;
   bill: any = {
@@ -43,6 +44,7 @@ export class CusCartComponent implements OnInit {
       err => {
         if (err.status === 401) {
           localStorage.clear();
+          this.router.navigate(['/']);
         }
         console.log(err);
       }

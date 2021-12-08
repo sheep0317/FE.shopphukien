@@ -5,7 +5,7 @@
 	<h1 class="brand-name">
 		phukien
 	</h1>
-	<div class="d-flex">
+	<div class="shopping_cart">
 		<div *ngIf = "isLogin()">
 			<div *ngIf="roleCheck()">
 				<button class="btn cart-btn"  data-bs-toggle="offcanvas" data-bs-target="#shop-cart"> <i class="material-icons">shopping_cart</i></button>
@@ -14,40 +14,47 @@
 		</div>
 	</div>
 </div>
-<nav class="navbar navbar-expand-md">
+<nav class="navbar navbar-expand-sm navbar-dark bg-blue">
 	<div class="container">
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li>
-					<a class="nav-link" routerLink="/homepage">Tất cả sản phẩm</a>
-				</li>
-				<li>
-					<a class="nav-link">Op Lung</a>
-				</li>
-				<li><a class="nav-link">Khác</a></li>
-			</ul>
-			<div class="d-flex">
+	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="mynavbar">
+		<ul class="navbar-nav me-auto">
+		  <li class="nav-item">
+			<a class="nav-link" routerLink="/homepage">Tất cả sản phẩm</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link">Khác</a>
+		  </li>
+		</ul>
+		<form class="d-flex">
+			<div class="button-function">
 				<div *ngIf = "isLogin(); else elseBlock">
-					<div *ngIf= "roleCheck(); else adminBlock">
-						<button class="btn btn-outline-success" routerLink="/customer">{{displayName}}</button>
+					<div class="btn-wrap">
+						<div *ngIf= "roleCheck(); else adminBlock">
+							<button class="btn btn-outline-success" routerLink="/customer">{{displayName}}</button>
+						</div>
+						<ng-template #adminBlock>
+							<button class="btn btn-outline-success" routerLink="/seller">{{displayName}}</button>
+						</ng-template>
+						<div>
+							<button class="btn btn-outline-success" (click)="logout()" >Đăng xuất</button>
+						</div>
 					</div>
-					<ng-template #adminBlock>
-						<button class="btn btn-outline-success" routerLink="/seller">{{displayName}}</button>
-					</ng-template>
-					<button class="btn btn-outline-success" (click)="logout()" >Đăng xuất</button>
 				</div>
 				<ng-template #elseBlock>
-					<button data-bs-toggle="modal" data-bs-target="#signupModal" class="btn" id="openModal" >Sign Up</button>
-					<button data-bs-toggle="modal" data-bs-target="#loginModal" class="btn" id="openModal" >Login</button>
+					<div class="btn-wrap">
+						<button data-bs-toggle="modal" data-bs-target="#signupModal" class="btn" id="openModal" >Sign Up</button>
+						<button data-bs-toggle="modal" data-bs-target="#loginModal" class="btn" id="openModal" >Login</button>
+					</div>
 				</ng-template>
 				
 			</div>
-		</div>
+		</form>
+	  </div>
 	</div>
-</nav>
+  </nav>
 
 <div class="modal fade" id="loginModal">
 	<div class="modal-dialog">
@@ -62,10 +69,6 @@
 		<!-- Modal body -->
 		<div class="modal-body">
 			<app-login></app-login>
-		</div>
-		<!-- Modal footer -->
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 		</div>
 	  </div>
 	</div>
@@ -85,10 +88,7 @@
 		<div class="modal-body">
 			<app-signup></app-signup>
 		</div>
-		<!-- Modal footer -->
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-		</div>
+		
 	  </div>
 	</div>
   </div>

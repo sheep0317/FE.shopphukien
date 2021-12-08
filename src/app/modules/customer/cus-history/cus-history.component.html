@@ -2,36 +2,48 @@
     <div *ngFor = "let order of allOrder">
         <div class="bill">
             <div>
-                Bill ID: {{order.id}}
+                Ma don hang: {{order.id}}
             </div>
             <div>
-                Created at: {{order.createDate}}
+                Ngay Dat: {{order.createDate}}
             </div>
             <div>
+                <div>
+                    Ngay Thanh toan
+                </div>
                 <div *ngIf = "isPaid(order.paidDate); else elseBlock">
-                    Da xu ly
+                    <div class="paid">
+                        Da thanh toan: {{order.paidDate | date : 'dd/MM/yyyy'}}
+                    </div>
                 </div>
                 <ng-template #elseBlock>
-                   Chua Xu Ly
+                    <div class="not-paid">
+                        Chua thanh toan
+                    </div>
                 </ng-template>
             </div>
-        </div>
-        <button data-bs-toggle="collapse" class="btn" [attr.data-bs-target]= "'#orderDetail' + order.id">Xem Them</button>
-        <div class="collapse" id="orderDetail{{order.id}}">
-            <div class="card card-body">
-                <div *ngFor = "let product of order.products">
-                    product: {{product.product_name}}
-                    product id: {{product.product_id}}
-                    product quantity: {{product.product_quantity}}
-                    product price: {{product.total}}
+            <button data-bs-toggle="collapse" class="btn" [attr.data-bs-target]= "'#orderDetail' + order.id">Xem Them</button>
+            <div class="collapse" id="orderDetail{{order.id}}">
+                <div class="card card-body">
+                    <div *ngFor = "let product of order.products">
+                        <div class = "product">
+                            <div>
+                                Ten san pham {{product.product_name}}
+                            </div>
+                            <div>
+                                Ma san pham {{product.product_id}}
+                            </div>
+                            <div>
+                                So luong dat: {{product.product_quantity}}
+                            </div>
+                            <div>
+                                Tong gia tri: {{product.total}}
+                            </div>
+                        </div>
+                    
+                    </div>
                 </div>
             </div>
-          </div>
-         
-
-          
-          
-        
-    
+        </div>
     </div>
 </div>

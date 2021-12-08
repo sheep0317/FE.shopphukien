@@ -1,0 +1,38 @@
+img.img-fluid{
+    max-width: 500px;
+    height: auto;
+}
+.wrap{
+    display: flex;
+    padding: 25px;
+    margin: 10px;
+    justify-content: center;
+}
+.wrap .description{
+    display: flex;
+    flex-direction: column;
+}
+.wrap .description input{
+    margin-bottom: 1rem;
+}
+.wrap .description .product_description p{
+    width: 100%;
+    height: 200px;
+    overflow: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: 2px 2px 2px #ccc;
+}
+.wrap .description button{
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #193073;
+    font-size: 20pt;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}

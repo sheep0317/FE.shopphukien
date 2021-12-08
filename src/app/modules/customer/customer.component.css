@@ -7,7 +7,7 @@ nav{
     flex-direction: column;
     background-color: black;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     padding: 30px 0;
     padding-left: 5px;
 }
@@ -33,9 +33,4 @@ nav .btn-a:focus{
     transition: none;
     border: transparent;
 }
-router-outlet{
 
-    width: 100%;
-    height: 100vh;
-    
-}

@@ -1,33 +1,37 @@
-<div class="row">
-  <div class="col-xl-3">
-    <input #searchValue class="form-control" placeholder="Name Search">
-    <input #minPrice class="form-control" placeholder="Min Value" type="number">
-    <input #maxPrice class="form-control" placeholder="Max Value" type="number">
-    <button class="btn" (click)="Filter(minPrice.value, maxPrice.value, searchValue.value)">Tim Kiem</button>
-    <button (click)="refresh()" class="btn">x</button> 
-  </div>
-  <div class="col-xl-9">
-    <div class="card-holder">
-      <div *ngFor = "let product of products | paginate: { itemsPerPage: 12, currentPage: p} ">
-        <a class="card" href="homepage/productdetail/{{product.productid}}">
-          <div class="card-img">
-            <img class= "img-fluid" src="{{product.product_image}}">
-          </div>
-          <div class="card-detail">
-            <div class="card-title">
-              {{product.product_name}}
-            </div>
-            <div class="card-price">
-              {{product.product_price}} VND
-            </div>
-          </div>
-             
-        </a>
-      </div>
+<div class="cate">
+
+  <div class="row">
+    <div class="col-xl-3 filtering">
+      <input #searchValue class="form-control" placeholder="Name Search">
+      <input #minPrice class="form-control" placeholder="Min Value" type="number">
+      <input #maxPrice class="form-control" placeholder="Max Value" type="number">
+      <button class="btn" (click)="Filter(minPrice.value, maxPrice.value, searchValue.value)">Tim Kiem</button>
+      <button (click)="refresh()" class="btn">Huy ket qua tim kiem</button> 
     </div>
-    <pagination-controls  (pageChange)="p = $event"
-                          previousLabel="Trang trước"
-                          nextLabel="Trang sau">
-    </pagination-controls>
-</div>
+    <div class="col-xl-9">
+      <div class="card-holder">
+        <div *ngFor = "let product of products | paginate: { itemsPerPage: 12, currentPage: p} ">
+          <a class="card" href="homepage/productdetail/{{product.productid}}">
+            <div class="card-img">
+              <img class= "img-fluid" src="{{product.product_image}}">
+            </div>
+            <div class="card-detail">
+              <div class="card-title">
+                {{product.product_name}}
+              </div>
+              <div class="card-price">
+                {{product.product_price}} VND
+              </div>
+            </div>
+               
+          </a>
+        </div>
+      </div>
+      <pagination-controls  (pageChange)="p = $event"
+                            previousLabel="Trang trước"
+                            nextLabel="Trang sau">
+      </pagination-controls>
+  </div>
+  </div>
+  
 </div>

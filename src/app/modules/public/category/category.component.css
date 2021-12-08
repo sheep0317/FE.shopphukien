@@ -1,3 +1,6 @@
+.cate{
+    margin: 20px 0;
+}
 .card-holder{
     display: flex;
     flex-wrap: wrap;
@@ -27,4 +30,23 @@
 }
 .card-price{
     font-weight: 600;
+}
+.filtering{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+.btn{
+    background-color:#305AD9 ;
+    border-radius: 0;
+    border: 1px solid #2A4FBF;
+    margin: 5px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.4) ;
+    color: #fff;
+}
+input.form-control{
+    border-radius: 0;
+    border: 1px solid #2A4FBF;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.4) ;
+    margin: 2px 0;
 }

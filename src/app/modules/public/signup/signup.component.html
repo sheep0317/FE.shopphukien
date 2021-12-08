@@ -1,71 +1,77 @@
-<form [formGroup]="signupForm" (ngSubmit)="onSignUp()">
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" formControlName="email">
-        <div *ngIf="signupForm.controls.email.hasError('email') && signupForm.controls.email.touched" class="alert alert-danger">
-            Please enter a valid email address
+<div class="wrap">
+    <form [formGroup]="signupForm" (ngSubmit)="onSignUp()">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+            <div *ngIf="signupForm.controls.email.hasError('email') && signupForm.controls.email.touched" class="alert alert-danger">
+                Please enter a valid email address
+            </div>
+            <div *ngIf="signupForm.controls.email.hasError('required') && signupForm.controls.email.touched" class="alert alert-danger">
+                Please enter an email address
+            </div>
         </div>
-        <div *ngIf="signupForm.controls.email.hasError('required') && signupForm.controls.email.touched" class="alert alert-danger">
-            Please enter an email address
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+            <div *ngIf="signupForm.controls.password.hasError('required') && signupForm.controls.password.touched" class="alert alert-danger">
+                Password is required
+            </div>
+            <div *ngIf="signupForm.controls.password.hasError('minlength') && signupForm.controls.password.touched" class="alert alert-danger">
+                Password is too short
+            </div>
+            <div *ngIf="signupForm.controls.password.hasError('maxlength') && signupForm.controls.password.touched" class="alert alert-danger">
+                Password is too
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" formControlName="password">
-    </div>
-    <div *ngIf="signupForm.controls.password.hasError('required') && signupForm.controls.password.touched" class="alert alert-danger">
-        Password is required
-    </div>
-    <div *ngIf="signupForm.controls.password.hasError('minlength') && signupForm.controls.password.touched" class="alert alert-danger">
-        Password is too short
-    </div>
-    <div *ngIf="signupForm.controls.password.hasError('maxlength') && signupForm.controls.password.touched" class="alert alert-danger">
-        Password is too
-    </div>
-    <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
-    </div>
-    <div *ngIf="signupForm.controls.confirmPassword.hasError('required') && signupForm.controls.confirmPassword.touched" class="alert alert-danger">
-        Confirm Password is required</div>
-    <div *ngIf="passNotMatch()">
-        <div class="alert alert-danger">
-            Password and Confirm Password do not match
+        
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+            <div *ngIf="signupForm.controls.confirmPassword.hasError('required') && signupForm.controls.confirmPassword.touched" class="alert alert-danger">
+                Confirm Password is required</div>
+            <div *ngIf="passNotMatch()">
+                <div class="alert alert-danger">
+                    Password and Confirm Password do not match
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="displayname">Display Name </label>
-        <input type="text" class="form-control" id="displayname" placeholder="Display Name" formControlName="displayname">
-    </div>
-    <div *ngIf="signupForm.controls.displayname.hasError('required') && signupForm.controls.displayname.touched" class="alert alert-danger">
-        Display Name is required
-    </div>
-    <div class="form-group">
-        <label for="gender">Gender</label>
-        <select name="gender" id="gender" class="form-control" formControlName="gender">
-            <option selected hidden>
-            </option>
-            <option value="0">Female</option>
-            <option value="1">Male</option>
-            <option value="2">Other</option>
-        </select>
-    </div>
-    <div *ngIf="signupForm.controls.gender.hasError('required')  && signupForm.controls.gender.touched" class="alert alert-danger">
-        Choose Gender
-    </div>
-    <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="text" class="form-control" id="phone" placeholder="Phone" formControlName="phone">
-    </div>
-    <div *ngIf="signupForm.controls.phone.hasError('required') && signupForm.controls.phone.touched" class="alert alert-danger">
-        Phone is required
-    </div>
-    <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" class="form-control" id="address" placeholder="Address" formControlName="address">
-    </div>
-    <div *ngIf="signupForm.controls.address.hasError('required') && signupForm.controls.address.touched" class="alert alert-danger">
-        Address is required
-    </div>  
-    <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid" data-bs-dismiss="modal">Sign Up</button>
-</form>
+        <div class="form-group">
+            <label for="displayname">Display Name </label>
+            <input type="text" class="form-control" id="displayname" placeholder="Display Name" formControlName="displayname">
+            <div *ngIf="signupForm.controls.displayname.hasError('required') && signupForm.controls.displayname.touched" class="alert alert-danger">
+                Display Name is required
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender" class="form-control" formControlName="gender">
+                <option selected hidden>
+                </option>
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+                <option value="2">Other</option>
+            </select>
+            <div *ngIf="signupForm.controls.gender.hasError('required')  && signupForm.controls.gender.touched" class="alert alert-danger">
+                Choose Gender
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" placeholder="Phone" formControlName="phone">
+            <div *ngIf="signupForm.controls.phone.hasError('required') && signupForm.controls.phone.touched" class="alert alert-danger">
+                Phone is required
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea type="text" class="form-control" id="address" placeholder="Address" formControlName="address"></textarea>
+            <div *ngIf="signupForm.controls.address.hasError('required') && signupForm.controls.address.touched" class="alert alert-danger">
+                Address is required
+            </div>  
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid" data-bs-dismiss="modal">Sign Up</button>
+    </form>
+</div>

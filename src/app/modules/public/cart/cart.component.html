@@ -1,34 +1,40 @@
-<div *ngFor="let product of cartItems">
-    <div class="row">
-        <div class="col">
-            <img src="{{product.product_image}}" alt="" class="img-fluid">
-        </div>
-        <div class="col">
-            <div>
-                {{product.product_name}}
+<div class="item-box">
+    <div *ngFor="let product of cartItems">
+        <div class="row item">
+            <div class="col-3">
+                <img src="{{product.product_image}}" alt="" class="img-fluid">
             </div>
-            <button (click)="subQuantity(product.product_id)">
-                -
-            </button>
-            <input type="number" value="{{product.product_quantity}}">
-            <button (click)="addQuantity(product.product_id)">
-                +
-            </button>
-            <div>
-                {{product.product_price}}
+            <div class="col-5">
+                <div>
+                    {{product.product_name}}
+                </div>
+                <div class="getQuantity"> 
+                    <button (click)="subQuantity(product.product_id)">
+                        -
+                    </button>
+                    <input type="number" value="{{product.product_quantity}}" onKeyDown="return false">
+                    <button (click)="addQuantity(product.product_id)">
+                        +
+                    </button>
+                </div>
+                
+                <div>
+                    {{product.product_price}}
+                </div>
             </div>
-        </div>
-        <div class="col">
-            <button (click)="deleteToCart(product.product_id)">Delete</button>
+            <div class="col-4">
+                <button class="deleteBtn"(click)="deleteToCart(product.product_id)">Delete</button>
+            </div>
         </div>
     </div>
 </div>
+
 <div class="total">
-    <h1>
-        {{totalCart}}
-    </h1>
+    <h3>
+      Tong gia tri:  {{totalCart}}
+    </h3>
 </div>
 <div class="row">
     <div class="col">
-        <button (click)="checkout()">Checkout</button>
-    </div>
+        <button class="checkout" (click)="checkout()">Checkout</button>
+</div>

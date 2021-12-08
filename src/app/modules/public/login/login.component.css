@@ -1,0 +1,11 @@
+.wrap{
+    display: flex;
+    justify-content: center;
+}
+.wrap div{
+    margin: 5px 0;
+    padding: 5px;
+}
+.wrap div button{
+    width: 100%;
+}

@@ -1,11 +1,19 @@
-<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" formControlName="loginEmail" class="form-control" id="email" name="email" required>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" formControlName="loginPassword" class="form-control" id="password" name="password"required>
-    </div>
-    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
-</form>
+<div class="wrap">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" formControlName="loginEmail" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" formControlName="loginPassword" class="form-control" id="password" name="password"required>
+        </div>
+        <div>
+            <a href = "reset-password" target="_blank" rel="noopener noreferrer">Quen Mat Khau</a>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Dang nhap</button>
+        </div>
+       
+    </form>
+</div>

@@ -1,22 +1,62 @@
 
-@media all and (min-width: 992px) {
-	.navbar .dropdown-menu-end{ right:0; left: auto;  }
-	.navbar .nav-item .dropdown-menu{  display:block; opacity: 0;  visibility: hidden; transition:.3s; margin-top:0;  }
-	.navbar .nav-item:hover .nav-link{ color: #6A6A6A;  }
-	.navbar .dropdown-menu.fade-down{ top:80%; transform: rotateX(-75deg); transform-origin: 0% 0%; }
-	.navbar .dropdown-menu.fade-up{ top:180%;  }
-	.navbar .nav-item:hover .dropdown-menu{ transition: .3s; opacity:1; visibility:visible; top:100%; transform: rotateX(0deg); }
+.wrap-nav{
+	display: flex;
+	justify-content: space-between;
 }
-
 nav{
-    background-color: #6A6A6A;
+    background-color: #193073;
+	height: 75px;
 
 }
 nav .nav-link{
     color: white;
 }
-.carousel-item img{
-	max-height: 500px;
-	height: auto;
-	width: auto;
+.shop-logo{
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
+button.cart-btn{
+	background-color: #193073;
+	color: white;
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.button-function{
+	display: flex;
+	flex-wrap: nowrap;
+}
+.bg-blue{
+	background-color: #193073;
+}
+#navbarSupportedContent{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+button.btn{
+	border: 1 solid white;
+	color: white;
+	border: none;
+	padding: 10px;
+	border-radius: 10px;
+	cursor: pointer;
+	display: flex;
+	margin: 0 10px;
+	justify-content: center;
+	align-items: center;
+}
+button.btn:hover{
+	background-color: white;
+	color: #193073;
+}
+.btn-wrap{
+	display: flex;
+	align-items: center;
 }
