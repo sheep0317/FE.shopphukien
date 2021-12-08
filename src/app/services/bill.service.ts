@@ -41,8 +41,8 @@ export class BillService {
   deleteBill(id: string) {
     const header = this.getHeaders();
     if (header instanceof HttpHeaders) {
-      return this.http.delete<Res>(API_LINK +'bill/deleteBill/' + id, { headers: header });
-    } return this.http.delete<Res>(API_LINK +'bill/deleteBill/' + id);
+      return this.http.delete<Res>(API_LINK +'bill/delete/' + id, { headers: header });
+    } return this.http.delete<Res>(API_LINK +'bill/delete/' + id);
   }
   updateBill(id: string, paid_date: any) {
     const header = this.getHeaders();
