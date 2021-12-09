@@ -72,13 +72,13 @@
        
             <!-- Modal Header -->
         <div class="modal-header">
-            <h4 class="modal-title">Add Product</h4>
+            <h4 class="modal-title">Cap nhat san pham</h4>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
     
           <!-- Modal body -->
           <div class="modal-body">
-                <input type="text" #productId class="form-control" placeholder="product id" value="{{clickedProduct.productid}}">
+                <input type="text" #productId class="form-control" disabled placeholder="product id" value="{{clickedProduct.productid}}">
                 <input type="number" #productPrice class="form-control" placeholder="Product Price" value="{{clickedProduct.product_price}}">
                 <input type="number" #productQuantity class="form-control" placeholder="Product Quantity" value="{{clickedProduct.product_quantity}}">
                 

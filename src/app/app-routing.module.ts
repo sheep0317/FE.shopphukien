@@ -39,7 +39,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'asdasdasds',
+    path: '**',
     redirectTo:'/404',
   },
   {
